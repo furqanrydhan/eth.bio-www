@@ -4,15 +4,16 @@ import {
   useDisconnect,
   useMetamask,
 } from "@thirdweb-dev/react";
-import type { NextPage } from "next";
 import { useEffect } from "react";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { NextPage } from "next";
 
 const Home: NextPage = () => {
   const address = useAddress();
   const connectWithMetamask = useMetamask();
   const disconnectWallet = useDisconnect();
   const { contract } = useContract(
-    "0xd52bc82124D34296A9b575835d1C8f4a6e34C40E"
+    "0x8925976c7f7c97bA36aFa4a97145A0A6E0C6DB61"
   );
 
   useEffect(() => {
@@ -25,14 +26,22 @@ const Home: NextPage = () => {
   }, [contract]);
   return (
     <div>
-      {address ? (
-        <>
-          <button onClick={disconnectWallet}>Disconnect Wallet</button>
-          <p>Your address: {address}</p>
-        </>
-      ) : (
-        <button onClick={connectWithMetamask}>Connect with Metamask</button>
-      )}
+      <Heading p={4}>Welcome to Eth.bio</Heading>
+      <Text fontSize="sm" p={4}>
+        This is where you can create your decentralized profile
+      </Text>
+      <Box p={4}>
+        {address ? (
+          <>
+            <Button onClick={disconnectWallet}>Disconnect Wallet</Button>
+            <p>Your address: {address}</p>
+          </>
+        ) : (
+          <>
+            <Button onClick={connectWithMetamask}>Connect with Metamask</Button>
+          </>
+        )}
+      </Box>
     </div>
   );
 };
