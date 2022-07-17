@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const connectWithMetamask = useMetamask();
   const disconnectWallet = useDisconnect();
   const { contract } = useContract(
-    "0x8925976c7f7c97bA36aFa4a97145A0A6E0C6DB61"
+    "0xf1B4FC3e438c62216CC581C206EC76D59347a148"
   );
 
   useEffect(() => {
